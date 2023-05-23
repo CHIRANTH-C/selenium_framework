@@ -1,0 +1,23 @@
+xpath = //tagname[@attribute='value']
+
+Absolute xpaths
+    /catalog/book
+Relative xpaths
+    //span[@id='productTitle']
+    //div[@id='detailBullets_feature_div']/div[1]/div[1]/ul/li[2]
+
+    //tagname[contains(@attribute, 'value')]
+
+    //tagname[contains(@attribute, 'value')]
+
+    //tagname[@attribute='value1' OR @attribute2='value2']
+
+    //div[@class='celwidget' or @data-feature-name='detailBullets']
+
+    //tagname[text()='Text of the element']
+
+    //tagname[starts-with(@attribute, value)]
+
+    //author[text()='Gambardella, Matthew']//following::genre[text()='Psychology']
+
+    //book[@id='bk103']//preceding::author
