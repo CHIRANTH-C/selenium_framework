@@ -22,10 +22,10 @@ def should_be_equal_as_strings(driver , xpath , expected_txt , lowercase=False):
         if lowercase:
             assert str(element_txt).lower() == str(expected_txt).lower()
         else:
-            assert str(element_txt) == str(element_txt)
-        print (f'Assertion passed , text {element_txt} not equal to expected text {element_txt}.')
+            assert str(element_txt) == str(expected_txt)
+        print (f'Assertion passed , text {element_txt} not equal to expected text {expected_txt}.')
     except AssertionError as e: # e is referencing the assertion error
-        print(f'Assertion failed , text {element_txt} not equal to expected text {element_txt}.')
+        print(f'Assertion failed , text {element_txt} not equal to expected text {expected_txt}.')
         raise AssertionError
 
 def should_be_equal_as_int(driver , xpath , expected_val):

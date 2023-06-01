@@ -3,7 +3,7 @@ from constants.xpath.sauce_demo import *
 
 import time
 
-driver = open_browser_to_link(url_link)
+driver = open_browser(url_link)
 # time.sleep(30)
 
 # log in details

@@ -4,9 +4,21 @@
 
 from library.basics_selenium_actions import *
 from constants.xpath.art_of_testing import *
-
+from constants.xpath.saucedemo import *
+from library.comparision_actions import *
 import time
 
+driver = open_browser("https://www.saucedemo.com/")
+wait_until_element_is_visible(driver, txt_box_username)
+enter_text_in_element(driver, txt_box_username, 'standard_user')
+enter_text_in_element(driver, txt_box_password, 'secret_sauce')
+click_element(driver, btn_login)
+wait_until_element_is_visible(driver, "//span[contains(text(), 'adsjsakdjasd;')]")
+should_be_equal_as_strings(driver, "//span[contains(text(), 'Products')]", "asdasdasdasd")
+
+
+
+"""
 driver = open_browser_to_link("https://www.saucedemo.com/")
 wait_until_element_is_visible(driver, '//*[@id="user-name"]')
 enter_text_in_element(driver, '//*[@id="user-name"]', 'standard_user')
@@ -19,7 +31,7 @@ wait_until_element_is_clickbale(driver, '//*[@id="add-to-cart-sauce-labs-backpac
 time.sleep(2)
 click_element(driver, '//*[@id="add-to-cart-sauce-labs-backpack"]')
 wait_until_element_is_visible(driver, '//*[@id="remove-sauce-labs-backpack"]')
-
+"""
 """
 driver = open_browser_to_link("https://artoftesting.com/samplesiteforselenium")
 

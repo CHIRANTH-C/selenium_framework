@@ -8,23 +8,48 @@ from library.comparision_actions import *
 from library.exception_handlers import *
 from constants.xpath.sauce_demo import *
 from constants.xpath.saucedemo import *
+from library.video_recorder import recording
 import time
 from library.data_helper import *
+import multiprocessing
 
-data = read_csv_data("/Users/chiranth.c/Documents/selenium_framework/constants/data/saus_demo_login.csv")
-driver = open_browser("https://www.saucedemo.com/")
-wait_until_element_is_visible(driver, txt_box_username)
-enter_text_in_element(driver, txt_box_username, data[3]['txt_box_username'])
-enter_text_in_element(driver, txt_box_password, data[3]['txt_box_password'])
-click_element(driver, btn_login)
-time.sleep(2)
-wait_until_element_is_visible(driver, lnk_backpack)
-click_element(driver, lnk_backpack)
-wait_until_element_is_clickbale(driver, btn_add_to_cart)
-time.sleep(2)
-click_element(driver, btn_add_to_cart)
-wait_until_element_is_visible(driver, btn_remove)
-time.sleep(10)
+def main():
+    recording_process = multiprocessing.Process(target=recording)
+    recording_process.start()
+
+    data = read_csv_data("/Users/chiranth.c/Documents/selenium_framework/constants/data/saus_demo_login.csv")
+    driver = open_browser("https://www.saucedemo.com/")
+    """
+    wait_until_element_is_visible(driver, txt_box_username)
+    enter_text_in_element(driver, txt_box_username, 'standard_user')
+    enter_text_in_element(driver, txt_box_password, 'secret_sauce')
+    click_element(driver, btn_login)
+    wait_until_element_is_visible(driver, "//span[contains(text(), 'adsjsakdjasd;')]")
+    should_be_equal_as_strings(driver, "//span[contains(text(), 'Products')]", "asdasdasdasd")
+
+    """
+    #data = read_mysql_data("SELECT  Pname, price  from product where Pname = 'Bed'")
+    #print(data)
+    # driver = open_browser("https://www.saucedemo.com/")
+
+    wait_until_element_is_visible(driver, txt_box_username)
+    enter_text_in_element(driver, txt_box_username, data[3]['txt_box_username'])
+    enter_text_in_element(driver, txt_box_password, data[3]['txt_box_password'])
+    click_element(driver, btn_login)
+    time.sleep(2)
+    wait_until_element_is_visible(driver, lnk_backpack)
+    click_element(driver, lnk_backpack)
+    wait_until_element_is_clickbale(driver, btn_add_to_cart)
+    time.sleep(2)
+    click_element(driver, btn_add_to_cart)
+    wait_until_element_is_visible(driver, btn_remove)
+    time.sleep(10)
+    recording_process.terminate()
+    driver.quit()
+
+# main method
+if __name__ == "__name__":
+    main()
 
 """
 # driver = open_browser_to_link("https://artoftesting.com/samplesiteforselenium")

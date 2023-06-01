@@ -9,7 +9,7 @@ import pytest
 
 @pytest.fixture
 def driver():
-    driver = open_browser_to_link("https://www.saucedemo.com/")
+    driver = open_browser("https://www.saucedemo.com/")
     yield driver
     # Teardown driver
     driver.quit()

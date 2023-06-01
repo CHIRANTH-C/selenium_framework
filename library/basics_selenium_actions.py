@@ -162,6 +162,7 @@ def wait_until_element_is_visible(driver, xpath, wait_time=10):
             return f"Element found: {xpath}."
     except Exception as e:
         print(f"{e}: Element not found: {xpath}.")
+        # raise Exception
         
         
 # explicit wait time
